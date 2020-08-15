@@ -17,7 +17,7 @@
         <module>laketrading-order</module>
         <module>laketrading-product</module>
         <module>laketrading-ware</module>
+        <module>laketrading-common</module>
     </modules>
 
 </project>
-
