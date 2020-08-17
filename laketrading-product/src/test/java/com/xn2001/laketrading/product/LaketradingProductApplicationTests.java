@@ -8,10 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class LaketradingProductApplicationTests {
-
     @Autowired
     BrandService brandService;
-
     @Test
     void contextLoads() {
         BrandEntity brandEntity = new BrandEntity();
@@ -20,5 +18,4 @@ class LaketradingProductApplicationTests {
         brandService.save(brandEntity);
         System.out.println("保存成功");
     }
-
 }
