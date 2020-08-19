@@ -18,6 +18,7 @@
         <module>laketrading-product</module>
         <module>laketrading-ware</module>
         <module>laketrading-common</module>
+        <module>renren-fast</module>
     </modules>
 
 </project>
