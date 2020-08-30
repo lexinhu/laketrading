@@ -17,7 +17,6 @@ import com.xn2001.common.utils.PageUtils;
 import com.xn2001.common.utils.R;
 
 
-
 /**
  * 商品三级分类
  *
@@ -35,30 +34,26 @@ public class CategoryController {
      * 查出所有分类以及子分类,以树形结构组装起来
      */
     @RequestMapping("/list/tree")
-        public R list(){
-        List<CategoryEntity> entities= categoryService.listWithTree();
-
+    public R list() {
+        List<CategoryEntity> entities = categoryService.listWithTree();
         return R.ok().put("data", entities);
     }
-
 
     /**
      * 信息
      */
     @RequestMapping("/info/{catId}")
-        public R info(@PathVariable("catId") Long catId){
-		CategoryEntity category = categoryService.getById(catId);
-
-        return R.ok().put("category", category);
+    public R info(@PathVariable("catId") Long catId) {
+        CategoryEntity category = categoryService.getById(catId);
+        return R.ok().put("data", category);
     }
 
     /**
      * 保存
      */
     @RequestMapping("/save")
-        public R save(@RequestBody CategoryEntity category){
-		categoryService.save(category);
-
+    public R save(@RequestBody CategoryEntity category) {
+        categoryService.save(category);
         return R.ok();
     }
 
@@ -66,9 +61,8 @@ public class CategoryController {
      * 修改
      */
     @RequestMapping("/update")
-        public R update(@RequestBody CategoryEntity category){
-		categoryService.updateById(category);
-
+    public R update(@RequestBody CategoryEntity category) {
+        categoryService.updateById(category);
         return R.ok();
     }
 
@@ -76,10 +70,9 @@ public class CategoryController {
      * 删除
      */
     @RequestMapping("/delete")
-        public R delete(@RequestBody Long[] catIds){
-		categoryService.removeByIds(Arrays.asList(catIds));
-
+    public R delete(@RequestBody Long[] catIds) {
+        //删除之前需要判断待删除的菜单那是否被别的地方所引用。
+        categoryService.removeMenusByIds(Arrays.asList(catIds));
         return R.ok();
     }
-
 }
