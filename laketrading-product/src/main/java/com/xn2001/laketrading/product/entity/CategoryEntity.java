@@ -22,7 +22,6 @@ import lombok.Data;
 @TableName("pms_category")
 public class CategoryEntity implements Serializable {
     private static final long serialVersionUID = 1L;
-
     /**
      * 分类id
      */

@@ -75,4 +75,10 @@ public class CategoryController {
         categoryService.removeMenusByIds(Arrays.asList(catIds));
         return R.ok();
     }
+
+    @RequestMapping("/update/sort")
+    public R updateSort(@RequestBody CategoryEntity[] categoryEntities){
+        categoryService.updateBatchById(Arrays.asList(categoryEntities));
+        return R.ok();
+    }
 }
