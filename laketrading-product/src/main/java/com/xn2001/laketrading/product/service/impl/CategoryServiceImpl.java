@@ -10,9 +10,7 @@ import com.xn2001.laketrading.product.entity.CategoryEntity;
 import com.xn2001.laketrading.product.service.CategoryService;
 import org.springframework.stereotype.Service;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service("categoryService")
@@ -45,6 +43,20 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         //TODO 1. 检查当前删除的菜单,是否被别的地方引用
         baseMapper.deleteBatchIds(asList);
     }
+
+    @Override
+    public Long[] findCatelogPath(Long catelogId) {
+        List<Long> paths = new ArrayList<>();
+        CategoryEntity byId = this.getById(catelogId);
+        paths.add(catelogId);
+        while (byId.getParentCid() != 0) {
+            byId = this.getById(byId.getParentCid());
+            paths.add(byId.getCatId());
+        }
+        Collections.reverse(paths);
+        return paths.toArray(new Long[0]);
+    }
+
 
     // 递归查找所有菜单的子菜单
     private List<CategoryEntity> getChildrens(CategoryEntity root, List<CategoryEntity> all) {
