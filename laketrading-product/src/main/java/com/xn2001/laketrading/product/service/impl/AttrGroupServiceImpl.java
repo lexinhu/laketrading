@@ -25,27 +25,23 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEnt
                 new Query<AttrGroupEntity>().getPage(params),
                 new QueryWrapper<>()
         );
-
         return new PageUtils(page);
     }
 
     @Override
     public PageUtils queryPage(Map<String, Object> params, Long catelogyId) {
-        if (catelogyId == 0) {
-            // 我承认人人这里的数据封装垃圾的一批, 凑合用吧, 看了十几分钟才看明白他这个东西怎么用.
-            IPage<AttrGroupEntity> page = this.page(new Query<AttrGroupEntity>().getPage(params), new QueryWrapper<>());
-            return new PageUtils(page);
-        } else {
-            String key = (String) params.get("key");
-            QueryWrapper<AttrGroupEntity> wrapper = new QueryWrapper<AttrGroupEntity>().eq("catelog_id", catelogyId);
-            if (!StringUtils.isEmpty(key)) {
-                wrapper.and((w) -> {
-                    w.eq("attr_group_id", key).or().like("attr_group_name", key);
-                });
-            }
-            IPage<AttrGroupEntity> page = this.page(new Query<AttrGroupEntity>().getPage(params), wrapper);
-            return new PageUtils(page);
+        // 我承认人人这里的数据封装垃圾的一批, 凑合用吧, 看了十几分钟才看明白他这个东西怎么用.
+        String key = (String) params.get("key");
+        QueryWrapper<AttrGroupEntity> wrapper = new QueryWrapper<>();
+        if (!StringUtils.isEmpty(key)) {
+            wrapper.and((w) -> {
+                w.eq("attr_group_id", key).or().like("attr_group_name", key);
+            });
         }
+        if (catelogyId != 0) {
+            wrapper.eq("catelog_id", catelogyId);
+        }
+        IPage<AttrGroupEntity> page = this.page(new Query<AttrGroupEntity>().getPage(params), wrapper);
+        return new PageUtils(page);
     }
-
 }

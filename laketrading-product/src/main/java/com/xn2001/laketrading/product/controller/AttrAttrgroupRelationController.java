@@ -15,8 +15,6 @@ import com.xn2001.laketrading.product.service.AttrAttrgroupRelationService;
 import com.xn2001.common.utils.PageUtils;
 import com.xn2001.common.utils.R;
 
-
-
 /**
  * 属性&属性分组关联
  *
@@ -77,7 +75,6 @@ public class AttrAttrgroupRelationController {
     @RequestMapping("/delete")
         public R delete(@RequestBody Long[] ids){
 		attrAttrgroupRelationService.removeByIds(Arrays.asList(ids));
-
         return R.ok();
     }
 
