@@ -3,7 +3,9 @@ package com.xn2001.laketrading.product.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.xn2001.common.utils.PageUtils;
 import com.xn2001.laketrading.product.entity.AttrGroupEntity;
+import com.xn2001.laketrading.product.vo.AttrGroupWithAttrsVo;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -18,5 +20,8 @@ public interface AttrGroupService extends IService<AttrGroupEntity> {
     PageUtils queryPage(Map<String, Object> params);
 
     PageUtils queryPage(Map<String, Object> params, Long catelogyId);
+
+    List<AttrGroupWithAttrsVo> getAttrGroupWithAttrsByCatelogId(Long catelogId);
+
 }
 
