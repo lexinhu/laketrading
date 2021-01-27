@@ -18,6 +18,9 @@
         <module>laketrading-product</module>
         <module>laketrading-ware</module>
         <module>laketrading-common</module>
+        <module>laketrading-search</module>
+        <module>laketrading-third-party</module>
+        <module>laketrading-gateway</module>
         <module>renren-fast</module>
     </modules>
 

@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "spring.cloud.nacos.config.extension-config[0].data.id",
+      "type": "java.lang.String",
+      "description": "Description for spring.cloud.nacos.config.extension-config[0].data.id."
+    },
+    {
+      "name": "spring.cloud.nacos.config.extension-config[0].refresh",
+      "type": "java.lang.String",
+      "description": "Description for spring.cloud.nacos.config.extension-config[0].refresh."
+    }
+  ] }
